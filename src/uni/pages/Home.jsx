@@ -97,7 +97,7 @@ function Home() {
         <ul className="publication-list">
           <li><span className="bold">Recordar el pasado:</span> Celebrar y contemplar el nacimiento de Jesús en Belén.</li>
           <li><span className="bold">Vivir el presente:</span> Vivir en el presente de nuestra vida diaria la presencia de Jesucristo en nosotros.</li>
-          <li><span className="bold">Preparar el futuro:</span> Prepararnos para la Parusía o segunda venida de Jesucristo en la majestad de su gloria.</li>
+          <li><span className="bold">Preparar el   futuro:</span> Prepararnos para la Parusía o segunda venida de Jesucristo en la majestad de su gloria.</li>
         </ul>
       </div>
      <Footer />
