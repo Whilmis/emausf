@@ -8,7 +8,7 @@ import { TopMenuUser } from '../uni/components/ui/top-menu-user/TopMenuUser';
 import { SidebarUser } from '../uni/components/ui/sidebar-user/SidebarUser';
 
 const CartPage = () => {
-    const { producCard, getProducCart }= useProducCart()
+    const { producCard, deleteProducCart }= useProducCart()
      const navigate = useNavigate();
 
    const[total, setTotal]= useState(0)
@@ -17,7 +17,10 @@ const CartPage = () => {
     
     navigate('/pago')
   }
- 
+  const handleDelete = (id) =>{
+    console.log(id)
+    deleteProducCart(id) 
+  }
  
 
    useEffect(()=>{
@@ -53,6 +56,7 @@ const CartPage = () => {
                   <h3>{item.nombre}</h3>
                   <p>Precio: ${item.precio}</p>
                 </div>
+                <button onClick={() => handleDelete(item._id)}>Eliminar</button>
               </div>
             ))}
           </div>

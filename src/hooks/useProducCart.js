@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { getProducCard, addProducCard, onupdateProducActive} from '../store';
+import { getProducCard, addProducCard, onupdateProducActive,  deleteProducCard} from '../store';
 import { calendarApi } from '../api';
 
 
@@ -31,6 +31,20 @@ export const useProducCart = () => {
             const {_id,usuario, ...producto}= produc
             const {data } = await calendarApi.post('/productos',{...producto})
             dispatch( addProducCard( data) )
+            
+        } catch (error) {
+           console.error(error)
+  
+      
+        }
+        
+    }
+
+    const deleteProducCart = async (id) => {
+        try {
+           
+             await calendarApi.delete(`/productos/${id}`)
+            dispatch(  deleteProducCard( id) )
             
         } catch (error) {
            console.error(error)
@@ -77,7 +91,8 @@ export const useProducCart = () => {
         getProducCart,
         toggleDateModal,
         getProducActive,
-        addProducCart
+        addProducCart,
+        deleteProducCart
     }
 
 }

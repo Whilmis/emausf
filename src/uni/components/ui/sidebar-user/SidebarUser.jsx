@@ -46,10 +46,7 @@ export const SidebarUser = () => {
               <span className="menu-text">Perfil</span>
             </Link>
 
-            <Link to="/orders" onClick={closeMenu} className="menu-link">
-              <IoTicketOutline size={30} />
-              <span className="menu-text">Mis Órdenes</span>
-            </Link>
+          
             <button className="menu-link" onClick={() => logout()}>
             <IoLogOutOutline size={30} />
             <span className="menu-text">Salir</span>
@@ -67,7 +64,7 @@ export const SidebarUser = () => {
             <div className="menu-separator" />
           
             <Link to="/admin/ordenes" onClick={closeMenu} className="menu-link">
-              <IoTicketOutline size={30} />
+              <IoSearchOutline size={30} />
               <span className="menu-text">Órdenes</span>
             </Link>
             <Link to="/admin/actividades" onClick={closeMenu} className="menu-link">
