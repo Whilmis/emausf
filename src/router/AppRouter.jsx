@@ -26,7 +26,7 @@ import { PublicarCalificacionesPage } from '../uni/pages/PublicarCalificacionesP
 import { HomePage } from '../uni/pages/HomePege';*/
 import { useAuthStore } from '../hooks';
 import { LoginPage } from '../auth';
-import Home from '../uni/pages/home';
+import Home from '../uni/pages/Home';
 import Retiros from '../uni/pages/Retiros';
 import Parroquias from '../uni/pages/Parroquias';
 import Gallery from '../uni/pages/Gallery';
