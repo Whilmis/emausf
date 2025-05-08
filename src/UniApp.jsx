@@ -1,15 +1,15 @@
+import React from 'react'; // Asegúrate de que React esté importado
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { AppRouter } from './router';
 import { store } from './store';
 
-
 export const UniApp = () => {
   return (
-    <Provider store={ store }>
+    <Provider store={store}>
       <BrowserRouter>
         <AppRouter />
       </BrowserRouter>
     </Provider>
-  )
-}
+  );
+};

@@ -1,6 +1,7 @@
 
-import { Navigate, Route, Routes } from 'react-router-dom';
 import React, { useEffect } from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
+
 /*
 
 import{UniPage}  from '../uni/pages/UniPage'
@@ -26,7 +27,7 @@ import { PublicarCalificacionesPage } from '../uni/pages/PublicarCalificacionesP
 import { HomePage } from '../uni/pages/HomePege';*/
 import { useAuthStore } from '../hooks/useAuthStore';
 import { LoginPage } from '../auth';
-import Home from '../uni/pages/Home';
+import HomeE from '../uni/pages/HomeE';
 import Retiros from '../uni/pages/Retiros';
 import Parroquias from '../uni/pages/Parroquias';
 import Gallery from '../uni/pages/Gallery';
@@ -75,7 +76,7 @@ export const AppRouter = () => {
     return (
         <Routes>
 
-                 <Route path="/" element={ <Home /> } />
+                 <Route path="/" element={ <HomeE /> } />
                  <Route path="/retiros" element={ <Retiros /> } />
                  <Route path="/parroquias" element={ <Parroquias /> } />
                  <Route path="/gallery" element={ <Gallery /> } />

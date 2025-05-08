@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from "react-router-dom";
 import { IoSearchOutline, IoCartOutline } from "react-icons/io5";
 import { useUiStore } from '../../../../hooks/useUiStore';

@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState, useEffect } from "react";
 import './slideshow.css'
 import m0 from '../../../pages/galeria_fotos_emaus/img-4.jpeg'
