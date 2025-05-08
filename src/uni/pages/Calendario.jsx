@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import './Calendario.css'; // 👈 Importamos el CSS
+import './calendario.css'; // 👈 Importamos el CSS
 import { TopMenu } from "../components/ui/top-menu/TopMenu";
 import { Sidebar } from "../components/ui/sidebar/Sidebar";
 import { useActividades } from '../../hooks/useActividades';
