@@ -1,12 +1,7 @@
 
-
-
 export const getEnvVariables = () => {
-
-    import.meta.env;
-
     return {
-        ...import.meta.env
-    }
-}
+        VITE_API_URL: import.meta.env.VITE_API_URL // Devuelve la variable de entorno con el prefijo VITE_
+    };
+};
 
