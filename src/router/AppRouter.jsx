@@ -24,9 +24,9 @@ import { CalendarioMPage } from '../uni/pages/CalendarioMPage';
 import { AsignaturasMPage } from '../uni/pages/AsignaturasMPage';
 import { PublicarCalificacionesPage } from '../uni/pages/PublicarCalificacionesPage';
 import { HomePage } from '../uni/pages/HomePege';*/
-import { useAuthStore } from '../hooks';
+import { useAuthStore } from '../hooks/useAuthStore';
 import { LoginPage } from '../auth';
-import Home from '../uni/pages/Home';
+import Home from '../uni/pages/home';
 import Retiros from '../uni/pages/Retiros';
 import Parroquias from '../uni/pages/Parroquias';
 import Gallery from '../uni/pages/Gallery';
