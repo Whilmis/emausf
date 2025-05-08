@@ -1,0 +1,45 @@
+
+  
+  .app-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 550px;
+    padding: 40px 20px;
+  }
+  
+  .app-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+  }
+  .pagination {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 20px 0;
+  }
+  
+  .pagination button {
+    padding: 8px 16px;
+    margin: 0 4px;
+    border: 1px solid #ddd;
+    background-color: white;
+    color: #007bff;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .pagination button:hover {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .pagination button:focus {
+    outline: none;
+  }
+  
+  .pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  

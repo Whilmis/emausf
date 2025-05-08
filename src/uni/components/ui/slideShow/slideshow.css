@@ -1,0 +1,60 @@
+/* Slideshow.css */
+
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 2rem 0;
+    background-color: #f3f4f6; /* gris claro */
+    color: #111827; /* texto gris oscuro */
+  }
+  
+  .slideshow-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 0.75rem;
+    border-radius: 9999px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .slideshow-button:hover {
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+  
+  .left-button {
+    left: 1rem;
+  }
+  
+  .right-button {
+    right: 1rem;
+  }
+  
+  .slideshow-image-container {
+    position: relative;
+    border: 4px solid #9ca3af; /* gris medio */
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  .slideshow-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 0.5rem;
+  }
+  
+  .slideshow-progress-bar {
+    width: 100%;
+    height: 0.5rem;
+    background: linear-gradient(to right, #9ca3af, #d1d5db);
+    border-radius: 9999px;
+    margin-top: 1.5rem;
+  }
+  

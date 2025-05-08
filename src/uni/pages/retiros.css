@@ -1,0 +1,68 @@
+/* Retiros.css */
+
+.retiros-section {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+    color: #1F2937;
+  }
+  
+  .retiros-title {
+    font-size: 1.875rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .retiros-divider {
+    border-bottom: 2px solid #9ca3af;
+    margin-bottom: 1.5rem;
+  }
+  
+  .retiros-text {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    margin-bottom: 2rem;
+  }
+  
+  .retiros-grid {
+    display: grid;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    align-items: center;
+  }
+  
+  .retiros-subtext {
+    font-size: 1.125rem;
+    max-width: 32rem;
+  }
+  
+  .retiros-image {
+    width: 50%;
+    border-radius: 0.5rem;
+    box-shadow: 0 6px 10px rgba(0,0,0,0.1);
+  }
+  
+  .retiros-video {
+    width: 100%;
+    border-radius: 0.5rem;
+    box-shadow: 0 6px 10px rgba(0,0,0,0.1);
+    margin-bottom: 3rem;
+  }
+  
+  .retiros-subtitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  .retiros-confidentiality {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #374151;
+  }
+  
+  .retiros-confidentiality-highlight {
+    color: #dc2626; /* rojo */
+  }
+  

@@ -1,0 +1,80 @@
+.checkout-page {
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  .checkout-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 8px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .order-summary {
+    margin-top: 30px;
+  }
+  
+  .order-item {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .order-total {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 10px;
+  }
+  
+  .checkout-button {
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    padding: 12px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+  }
+  
+  .checkout-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .checkout-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  .paypal-button {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+ 
