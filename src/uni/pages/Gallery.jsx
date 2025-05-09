@@ -4,12 +4,14 @@ import { TopMenu } from "../components/ui/top-menu/TopMenu";
 import { Sidebar } from "../components/ui/sidebar/Sidebar";
 
 const images = [
-  { id: 1, src: "/imagenesretirosemaus/uno.jpg", alt: "Imagen 1" },
-  { id: 2, src: "/imagenesretirosemaus/dos.jpg", alt: "Imagen 2" },
-  { id: 3, src: "/imagenesretirosemaus/tres.jpeg", alt: "Imagen 3" },
-  { id: 4, src: "/imagenesretirosemaus/cuatro.jpeg", alt: "Imagen 4" },
-  { id: 5, src: "/imagenesretirosemaus/cinco.jpeg", alt: "Imagen 5" },
-  { id: 6, src: "/imagenesretirosemaus/seis.jpg", alt: "Imagen 6" },
+  { id: 1, src: "https://res.cloudinary.com/dwjkuhxmr/image/upload/v1746790852/imagenesretirosemaus/yq89nxuntmouwfkuveqj.jpg", alt: "Imagen 1" },
+  { id: 2, src: "https://res.cloudinary.com/dwjkuhxmr/image/upload/v1746790853/imagenesretirosemaus/kuk2j1mzuxcfmv818lj4.jpg", alt: "Imagen 2" },
+  { id: 3, src: "https://res.cloudinary.com/dwjkuhxmr/image/upload/v1746790853/imagenesretirosemaus/zcxwc3bh3psyikhmgx6d.jpg", alt: "Imagen 3" },
+  { id: 4, src: "https://res.cloudinary.com/dwjkuhxmr/image/upload/v1746790851/imagenesretirosemaus/vamitewpovwpdlw4emzw.jpg", alt: "Imagen 4" },
+  { id: 5, src: "https://res.cloudinary.com/dwjkuhxmr/image/upload/v1746790851/imagenesretirosemaus/dcr0spbgwtmzalclttnk.jpg", alt: "Imagen 5" },
+  { id: 6, src: "https://res.cloudinary.com/dwjkuhxmr/image/upload/v1746790851/imagenesretirosemaus/ycomviqdvnuqbulcqclx.jpg", alt: "Imagen 6" },
+  { id: 7, src: "https://res.cloudinary.com/dwjkuhxmr/image/upload/v1746790851/imagenesretirosemaus/ycomviqdvnuqbulcqclx.jpg", alt: "Imagen 7" },
+  { id: 8, src: "https://res.cloudinary.com/dwjkuhxmr/image/upload/v1746790851/imagenesretirosemaus/cg2idrsbyocjwanstpoj.jpg", alt: "Imagen 8" },
 ];
 
 const Gallery = () => {

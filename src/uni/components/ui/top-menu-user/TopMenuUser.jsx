@@ -22,7 +22,7 @@ export const TopMenuUser = () => {
       {/* Logo */}
       
       <div className="logo">
-      <img src={logo} alt="Emaús" className="logo" />
+      <img src='https://res.cloudinary.com/dwjkuhxmr/image/upload/v1746790797/imagenesvarias/goi9volcm529ppaqsipx.png' alt="Emaús" className="logo" />
         <Link to={'/'} className="logo-link">Emaus Hombres</Link>
       </div>
 

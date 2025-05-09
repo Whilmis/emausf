@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import { IoSearchOutline, IoCartOutline } from "react-icons/io5";
 import { useUiStore } from '../../../../hooks/useUiStore';
-import logo from '../../../pages/imagenesvarias/logoemaus.jpg';
 import './topMenu.css';
 
 export const TopMenu = () => {
@@ -14,7 +13,7 @@ export const TopMenu = () => {
       {/* Logo */}
      
       <div className="logo">
-      <img src={logo} alt="Emaús" className="logo" />
+      <img src='https://res.cloudinary.com/dwjkuhxmr/image/upload/v1746790797/imagenesvarias/goi9volcm529ppaqsipx.png' alt="Emaús" className="logo" />
         <Link to={'/'} className="logo-link">Emaus Hombres</Link>
       </div>
 

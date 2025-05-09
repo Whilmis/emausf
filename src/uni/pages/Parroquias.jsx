@@ -6,7 +6,7 @@ import { Sidebar } from "../components/ui/sidebar/Sidebar";
 const parroquias = [
   {
     nombre: "Parroquia San Fco. de Asis Paz y Bien",
-    imagen: "/imagenesparroquiasemaus/pazybie2.jpeg",
+    imagen: "https://res.cloudinary.com/dwjkuhxmr/image/upload/v1746790889/imagenesparroquiasemaus/qo7z5etrkqnoiraglo5u.jpg",
     direccion:
       "Av Sabana Larga, Santo Domingo Este 11501, Dominican Republic. Teléfono: (809) 594-8664",
     ubicacion:
@@ -14,7 +14,7 @@ const parroquias = [
   },
   {
     nombre: "Parroquia San Jose Obrero",
-    imagen: "/imagenesparroquiasemaus/sjo2.jpg",
+    imagen: "https://res.cloudinary.com/dwjkuhxmr/image/upload/v1746790890/imagenesparroquiasemaus/qmfrnf5t3qugbypnbdp5.jpg",
     direccion:
       "Av Sabana Larga, Santo Domingo Este 11501, Dominican Republic. Teléfono: (809) 594-8664",
     ubicacion:
@@ -22,7 +22,7 @@ const parroquias = [
   },
   {
     nombre: "Parroquia Nuestra Señora de la Fe",
-    imagen: "/imagenesparroquiasemaus/lafe.jpg",
+    imagen: "https://res.cloudinary.com/dwjkuhxmr/image/upload/v1746790887/imagenesparroquiasemaus/r1mszuzwrdc08q2ims2j.jpg",
     direccion:
       "Av Sabana Larga, Santo Domingo Este 11501, Dominican Republic. Teléfono: (809) 594-8664",
     ubicacion:
@@ -30,7 +30,7 @@ const parroquias = [
   },
   {
     nombre: "Parroquia San Isidro Labrador",
-    imagen: "/imagenesparroquiasemaus/sanisidrol.jpg",
+    imagen: "https://res.cloudinary.com/dwjkuhxmr/image/upload/v1746790889/imagenesparroquiasemaus/iaarjxzp86gb5rxn930f.jpg",
     direccion:
       "Av Sabana Larga, Santo Domingo Este 11501, Dominican Republic. Teléfono: (809) 594-8664",
     ubicacion:
@@ -42,7 +42,7 @@ const parroquias = [
     direccion:
       "Av Sabana Larga, Santo Domingo Este 11501, Dominican Republic. Teléfono: (809) 594-8664",
     ubicacion:
-      "https://www.google.es/maps/place/Iglesia+cat%C3%B3lica+Parroquia+San+Francisco+de+As%C3%ADs+Paz+y+Bien/@18.4866097,-69.8680741,17z",
+      "https://res.cloudinary.com/dwjkuhxmr/image/upload/v1746790890/imagenesparroquiasemaus/cbdhwzfpzcxhbhcr8c5e.jpg",
   },
 ];
 

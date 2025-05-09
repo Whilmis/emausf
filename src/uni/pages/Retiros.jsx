@@ -1,6 +1,5 @@
 import React from "react";
 import './retiros.css'
-import m6 from "./imagenesvarias/emaus6.jpg";
 import { Sidebar } from "../components/ui/sidebar/Sidebar";
 import { TopMenu } from "../components/ui/top-menu/TopMenu";
 
@@ -28,7 +27,7 @@ const Retiros = () => {
           donde dos discípulos se dirigían a un pueblo llamado Emaús, cerca de Jerusalén.
         </p>
         <img 
-          src={m6}
+          src='https://res.cloudinary.com/dwjkuhxmr/image/upload/v1746790796/imagenesvarias/tx7jngyxxg5aw61hw1yo.jpg'
           alt="Camino de Emaús" 
           className="retiros-image"
         />

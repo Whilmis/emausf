@@ -4,7 +4,6 @@ import quienesomos from './imagenesvarias/quienesomos.jpg'
 import m4 from './imagenesvarias/m4.jpeg'
 import m1 from './imagenesvarias/m1.jpeg'
 import adviento from './imagenesvarias/Adviento.jpeg'
-import img31 from './galeria_fotos_emaus/img-31.jpeg'
 import Slideshow from '../components/ui/slideShow/SlideShow';
 import { TopMenu } from '../components/ui/top-menu/TopMenu';
 import { Sidebar } from '../components/ui/sidebar/Sidebar';
@@ -28,12 +27,12 @@ function HomeE() {
           laicos de la comunidad, con la función principal de ayudar a otras personas a
           reconocer a Jesús en su vida.
         </p>
-        <img src={img31} alt="Emaús" className="home-image" />
+        <img src='https://res.cloudinary.com/dwjkuhxmr/image/upload/v1746790825/galeria_fotos_emaus/fsp9sdrbwoozdb8fpbed.jpg' alt="Emaús" className="home-image" />
         <p className="home-text">
           La Nueva vida que nos trae Jesús no se puede vivir al margen de los demás, sino que tiene que compartirse
           con otros hermanos en la fe y ser abierta a todos los demás.
         </p>
-        <img src={quienesomos} alt="Quienes Somos" className="home-image" />
+        <img src='https://res.cloudinary.com/dwjkuhxmr/image/upload/v1746790796/imagenesvarias/fhgcaki78xhw58stfo6k.jpg' alt="Quienes Somos" className="home-image" />
         <p className="home-text">
           La Comunidad de Emaús no se ha establecido únicamente por el simple hecho de poder compartir
           las experiencias adquiridas durante el Retiro, sino como fórmula de compromiso para servir a Jesús en
@@ -52,7 +51,7 @@ function HomeE() {
         </p>
 
         <div className="history-grid">
-          <img src={m4} alt="Emaús" className="history-image" />
+          <img src='https://res.cloudinary.com/dwjkuhxmr/image/upload/v1746790797/imagenesvarias/fcce7txp1i6ntbohqx8m.jpg' alt="Emaús" className="history-image" />
           <p className="history-paragraph">
           Ella quería un retiro verdadero, alejado del mundanal ruido para acercarse a Jesús y meditar Su palabra.
       Para ello debía ser un retiro para hombres y mujeres por separado, ya que nuestras problemáticas,
@@ -66,7 +65,7 @@ function HomeE() {
         </p>
 
         <div className="history-grid">
-          <img src={m1} alt="Emaús" className="history-image" />
+          <img src='https://res.cloudinary.com/dwjkuhxmr/image/upload/v1746790797/imagenesvarias/c8k8qxpnuxracwwj2ij4.jpg' alt="Emaús" className="history-image" />
           <p className="history-paragraph">
           El objetivo final del retiro es amar cada día más a Jesús y, a través de ese amor, aprender a amar cada día
           más a nuestros hermanos y servir en nuestras parroquias.
@@ -86,7 +85,7 @@ function HomeE() {
           donde celebramos el nacimiento del niño Jesús. La palabra latina adventus significa venida
           En el lenguaje cristiano se refiere a la venida de Jesucristo.
         </p>
-        <img src={adviento} alt="Adviento" className="publication-image" />
+        <img src='https://res.cloudinary.com/dwjkuhxmr/image/upload/v1746790795/imagenesvarias/biimxqys4uk55wkjxsjn.jpg' alt="Adviento" className="publication-image" />
         <p className="publication-text">
         El color litúrgico de este tiempo es el morado que significa penitencia.
         </p>
