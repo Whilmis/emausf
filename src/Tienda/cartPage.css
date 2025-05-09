@@ -1,6 +1,7 @@
 .cart-page {
     padding: 20px;
     max-width: 1200px;
+    min-height: 600px;
     margin: 0 auto;
   }
   

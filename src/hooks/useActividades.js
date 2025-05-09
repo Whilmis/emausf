@@ -70,8 +70,9 @@ export const useActividades = () => {
     const updateActividades = async (actividad, image ) =>{
         try{
             const {_id,...objeto}= actividad
-            const { data } = console.log(objeto)
-             await calendarApi.put(`/actividades/${_id}`,{...objeto});
+            const { data } = await calendarApi.put(`/actividades/${_id}`,{...objeto}); 
+            console.log(data)
+             
              if (!image || !(image instanceof File)) {
                 throw new Error('El archivo de la imagen no es válido.');
             }

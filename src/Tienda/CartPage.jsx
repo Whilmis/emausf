@@ -8,10 +8,11 @@ import { TopMenuUser } from '../uni/components/ui/top-menu-user/TopMenuUser';
 import { SidebarUser } from '../uni/components/ui/sidebar-user/SidebarUser';
 
 const CartPage = () => {
-    const { producCard, deleteProducCart }= useProducCart()
+    const { producCard, deleteProducCart, getProducCart}= useProducCart()
      const navigate = useNavigate();
 
    const[total, setTotal]= useState(0)
+   const[product, setProduct]= useState([])
    const pago = () =>{
 
     
@@ -20,8 +21,11 @@ const CartPage = () => {
   const handleDelete = (id) =>{
     console.log(id)
     deleteProducCart(id) 
+    getProducCart()
   }
- 
+  useEffect(()=>{
+   setProduct(producCard)
+   },[producCard])
 
    useEffect(()=>{
     producCard.map((item, index) => { setTotal((el)=> el + item.precio)})
@@ -36,16 +40,16 @@ const CartPage = () => {
       <h1>Tu Carrito</h1>
 
       {/* Si no hay productos en el carrito */}
-      {producCard.length === 0 ? (
+      {product.length === 0 ? (
         <div className="empty-cart">
           <p>Tu carrito está vacío.</p>
-          <Link to="/pago" className="go-to-shop">Ir a realizar el pago</Link>
+          
         </div>
       ) : (
         <div>
           {/* Lista de productos en el carrito */}
           <div className="cart-items">
-            {producCard.map((item, index) => (
+            {product.map((item, index) => (
                 
               <div key={index} className="cart-item">
                

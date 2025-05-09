@@ -15,7 +15,7 @@ export const useProducCart = () => {
         try {
 
             const { data } = await calendarApi.get('/productos/user');
-           
+            console.log(data)
             dispatch( getProducCard(data) )
             
         } catch (error) {

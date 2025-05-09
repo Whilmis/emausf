@@ -75,7 +75,7 @@ const ArticulosPage = () => {
   const handleImageChange2 = (e) => {
     const file = e.target.files[0]; // Obtener el archivo seleccionado
     if (file) {
-      setImage(file); // Guardar el archivo en el estado
+      setImage2(file); // Guardar el archivo en el estado
     }
   };
 
@@ -101,7 +101,7 @@ const ArticulosPage = () => {
         cantidad: 1,
         precio: 0,
         descripcion: '',
-        img: ''
+ 
       });
     } catch (error) {
       console.error("Error adding product:", error);
@@ -174,16 +174,10 @@ const ArticulosPage = () => {
           onChange={handleInputChange}
           required
         />
-        <input
-          type="text"
-          name="img"
-          placeholder="Imagen URL"
-          value={newProduct.img}
-          onChange={handleInputChange}
-        />
+  
 
 
-{image2 && (
+{image && (
         <div>
           <h3>Vista previa:</h3>
           <img
@@ -232,14 +226,8 @@ const ArticulosPage = () => {
             onChange={handleEditInputChange}
             required
           />
-          <input
-            type="text"
-            name="img"
-            placeholder="Imagen URL"
-            value={editProduct.img}
-            onChange={handleEditInputChange}
-          />
-          {image && (
+      
+          {image2 && (
         <div>
           <h3>Vista previa:</h3>
           <img

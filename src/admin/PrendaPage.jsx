@@ -17,7 +17,7 @@ const PrendaPage = () => {
     talla: '',
     precio: 0,
     descripcion: '',
-    img: ''
+
   });
   const [editProduct, setEditProduct] = useState(null); // Para editar productos
   const {paginacionPrendas, prendasState,addPrendas, updatePrendas,delentePrendas } = usePrendas();
@@ -83,7 +83,7 @@ const PrendaPage = () => {
   const handleImageChange2 = (e) => {
     const file = e.target.files[0]; // Obtener el archivo seleccionado
     if (file) {
-      setImage(file); // Guardar el archivo en el estado
+      setImage2(file); // Guardar el archivo en el estado
     }
   };
 
@@ -182,13 +182,7 @@ const PrendaPage = () => {
           onChange={handleInputChange}
           required
         />
-        <input
-          type="text"
-          name="img"
-          placeholder="Imagen URL"
-          value={newProduct.img}
-          onChange={handleInputChange}
-        />
+
 
 {image && (
         <div>
@@ -247,14 +241,7 @@ const PrendaPage = () => {
             onChange={handleEditInputChange}
             required
           />
-          <input
-            type="text"
-            name="img"
-            placeholder="Imagen URL"
-            value={editProduct.img}
-            onChange={handleEditInputChange}
-          />
-
+   
 {image2 && (
         <div>
           <h3>Vista previa:</h3>

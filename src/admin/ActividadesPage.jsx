@@ -77,7 +77,7 @@ const ActividadesPage = () => {
   const handleImageChange2 = (e) => {
     const file = e.target.files[0]; // Obtener el archivo seleccionado
     if (file) {
-      setImage(file); // Guardar el archivo en el estado
+      setImage2(file); // Guardar el archivo en el estado
     }
   };
   // Formatea las fechas a formato correcto para datetime-local

@@ -11,6 +11,7 @@ export const producCardSlice = createSlice({
     },
     reducers: {
         getProducCard: ( state, { payload } ) => {
+         
             state.producCard = payload;
         },
         addProducCard: ( state, { payload } ) => {
@@ -22,6 +23,7 @@ export const producCardSlice = createSlice({
            
         },
         onUpdateProducCard: ( state, { payload } ) => {
+            console.log(payload)
             state.producCard = state.producCard.map( event => {
                 if ( event._id === payload._id ) {
                     return payload;
@@ -32,7 +34,7 @@ export const producCardSlice = createSlice({
         },
 
         deleteProducCard: ( state, { payload } ) => {
-            state.producCard = state.producCard.filter(element => element._id != payload.id );
+            state.producCard = state.producCard.filter(element => element._id != payload );
         
         }
    
