@@ -112,7 +112,7 @@ export const AppRouter = () => {
                     ? (
                         <>
 
-                      <Route path="/" element={ <Home /> } />
+                    
                       <Route path="/retiros" element={ <Retiros /> } />
                       <Route path="/parroquias" element={ <Parroquias /> } />
                       <Route path="/gallery" element={ <Gallery /> } />
@@ -132,7 +132,7 @@ export const AppRouter = () => {
                     : ( rol === 'ADMIN_ROLE')  
                     ? (
                         <>
-                           <Route path="/" element={ <Home /> } />
+                    
                       <Route path="/retiros" element={ <Retiros /> } />
                       <Route path="/parroquias" element={ <Parroquias /> } />
                       <Route path="/gallery" element={ <Gallery /> } />
@@ -150,7 +150,7 @@ export const AppRouter = () => {
                     : (
                         <>
 
-                 <Route path="/" element={ <Home /> } />
+           
                  <Route path="/retiros" element={ <Retiros /> } />
                  <Route path="/parroquias" element={ <Parroquias /> } />
                  <Route path="/gallery" element={ <Gallery /> } />
