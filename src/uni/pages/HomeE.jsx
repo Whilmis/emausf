@@ -1,9 +1,6 @@
 import React from 'react';
 import './home.css'
-import quienesomos from './imagenesvarias/quienesomos.jpg'
-import m4 from './imagenesvarias/m4.jpeg'
-import m1 from './imagenesvarias/m1.jpeg'
-import adviento from './imagenesvarias/Adviento.jpeg'
+
 import Slideshow from '../components/ui/slideShow/SlideShow';
 import { TopMenu } from '../components/ui/top-menu/TopMenu';
 import { Sidebar } from '../components/ui/sidebar/Sidebar';

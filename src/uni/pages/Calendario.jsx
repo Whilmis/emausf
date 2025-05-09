@@ -3,6 +3,7 @@ import './calendario.css'; // 👈 Importamos el CSS
 import { TopMenu } from "../components/ui/top-menu/TopMenu";
 import { Sidebar } from "../components/ui/sidebar/Sidebar";
 import { useActividades } from '../../hooks/useActividades';
+import Footer from "../components/ui/footer/Footer";
 
 
 
@@ -101,6 +102,7 @@ export default function Calendario() {
           Siguiente
         </button>
       </div>
+      <Footer />
     </>
   );
 }

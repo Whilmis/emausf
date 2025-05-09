@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { IoSearchOutline, IoCartOutline } from "react-icons/io5";
 import { useUiStore } from '../../../../hooks/useUiStore';
 import{useProducCart} from '../../../../hooks/useProducCart'
-import logo from '../../../pages/imagenesvarias/logoemaus.jpg';
 import './topMenu.css';
 import { useEffect } from "react";
 

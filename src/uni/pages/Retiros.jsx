@@ -2,6 +2,7 @@ import React from "react";
 import './retiros.css'
 import { Sidebar } from "../components/ui/sidebar/Sidebar";
 import { TopMenu } from "../components/ui/top-menu/TopMenu";
+import Footer from "../components/ui/footer/Footer";
 
 const Retiros = () => {
   return (
@@ -82,6 +83,7 @@ const Retiros = () => {
 
       <div className="retiros-divider"></div>
     </section>
+    <Footer />
     </>
   );
 };

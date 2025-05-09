@@ -2,6 +2,7 @@ import React from "react";
 import './parroquias.css'
 import { TopMenu } from "../components/ui/top-menu/TopMenu";
 import { Sidebar } from "../components/ui/sidebar/Sidebar";
+import Footer from "../components/ui/footer/Footer";
 
 const parroquias = [
   {
@@ -38,11 +39,11 @@ const parroquias = [
   },
   {
     nombre: "Parroquia San Vicente de Paul",
-    imagen: "/imagenesparroquiasemaus/spaul2.jpg",
+    imagen: "https://res.cloudinary.com/dwjkuhxmr/image/upload/v1746790890/imagenesparroquiasemaus/cbdhwzfpzcxhbhcr8c5e.jpg",
     direccion:
       "Av Sabana Larga, Santo Domingo Este 11501, Dominican Republic. Teléfono: (809) 594-8664",
     ubicacion:
-      "https://res.cloudinary.com/dwjkuhxmr/image/upload/v1746790890/imagenesparroquiasemaus/cbdhwzfpzcxhbhcr8c5e.jpg",
+      "https://www.google.es/maps/place/Iglesia+cat%C3%B3lica+Parroquia+San+Francisco+de+As%C3%ADs+Paz+y+Bien/@18.4866097,-69.8680741,17z",
   },
 ];
 
@@ -75,6 +76,7 @@ export default function Parroquias() {
         ))}
       </div>
     </div>
+    <Footer />
     </>
   );
 }

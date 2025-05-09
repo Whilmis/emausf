@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import './Gallery.css'; // 👈 Importación del CSS
 import { TopMenu } from "../components/ui/top-menu/TopMenu";
 import { Sidebar } from "../components/ui/sidebar/Sidebar";
+import Footer from "../components/ui/footer/Footer";
 
 const images = [
   { id: 1, src: "https://res.cloudinary.com/dwjkuhxmr/image/upload/v1746790852/imagenesretirosemaus/yq89nxuntmouwfkuveqj.jpg", alt: "Imagen 1" },
@@ -68,6 +69,8 @@ const Gallery = () => {
         </div>
       )}
     </div>
+    <Footer />
+    
     </>
   );
 };
