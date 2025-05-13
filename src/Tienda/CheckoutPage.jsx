@@ -37,6 +37,7 @@ const CheckoutPage = () => {
 
    useEffect(()=>{
     producCard.map((item, index) => { setTotal((el)=> el + item.precio)})
+    console.log(producCard)
    },[])
 
   return (

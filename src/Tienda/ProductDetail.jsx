@@ -11,7 +11,7 @@ const ProductDetail = () => {
 
   // Función para manejar el cambio en la cantidad del producto
 
-
+ console.log(producActive)
 
 
   // Función para manejar el clic en el botón de "Agregar al carrito"

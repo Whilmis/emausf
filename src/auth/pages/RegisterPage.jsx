@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuthStore, useForm } from '../../hooks';
 import Swal from 'sweetalert2';
 
@@ -20,7 +20,7 @@ const registerFormFields = {
 export const ResgisterPage = () => {
   const { registerEmail, registerName, registerPassword, registerPassword2, registerTelefono, registerDireccion, registerEdad, onInputChange: onRegisterInputChange, registerIglesia } = useForm(registerFormFields);
   const {  errorMessage, startRegister } = useAuthStore();
- 
+   const [image, setImage] = useState(null); 
 
   const registerSubmit = (event) => {
     event.preventDefault();
@@ -29,7 +29,7 @@ export const ResgisterPage = () => {
       return;
     }
     console.log({ nombre: registerName, correo: registerEmail, password: registerPassword, iglesia: registerIglesia , direccion:registerDireccion, telefono: registerTelefono, edad: registerEdad,  "rol": "USER_ROLE"})
-    startRegister({ nombre: registerName, correo: registerEmail, direccion:registerDireccion, telefono: registerTelefono, edad: registerEdad.number, iglesia: registerIglesia ,    rol: "USER_ROLE",  password: registerPassword,});
+    startRegister({ nombre: registerName, correo: registerEmail, direccion:registerDireccion, telefono: registerTelefono, edad: registerEdad.number, iglesia: registerIglesia ,    rol: "USER_ROLE",  password: registerPassword,}, image);
     Swal.fire({
       title: "Usuario creado con exito, ya puedes loguearte!!!!!",
       icon: "success",
@@ -45,6 +45,13 @@ export const ResgisterPage = () => {
       }
 
     });
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0]; // Obtener el archivo seleccionado
+    if (file) {
+      setImage(file); // Guardar el archivo en el estado
+    }
   };
 
   useEffect(() => {
@@ -158,6 +165,17 @@ export const ResgisterPage = () => {
                 <option value="Parroquia San Vicente de Paul">Parroquia San Vicente de Paul</option>
               </select>
             </div>
+            {image && (
+        <div>
+          <h3>Vista previa:</h3>
+          <img
+            src={URL.createObjectURL(image)}
+            alt="Vista previa"
+            width="100"
+          />
+        </div>
+      )} 
+      <input type="file" onChange={handleImageChange} />
 
             <div className="register-button-container">
               <input

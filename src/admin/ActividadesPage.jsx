@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'; // Importa axios para las solicitudes HTTP
+import React, { useState, useEffect } from 'react'; 
+import ModalUsuarios from './ModalUsuarios'; // Importa axios para las solicitudes HTTP
 import './activityPage.css'; // Estilos de la página
 import Footer from '../uni/components/ui/footer/Footer';
 import { useActividades } from '../hooks/useActividades';
@@ -10,6 +11,8 @@ const ActividadesPage = () => {
   const [image, setImage] = useState(null);
   const [image2, setImage2] = useState(null);
   const [desde, setDesde] = useState(0);
+  const [modalOpen, setModalOpen] = useState(false);
+const [selectedUsuarios, setSelectedUsuarios] = useState([]);
   const { paginacionActividades, actividadesState, updateActividades,addActividades,delenteActividades } = useActividades();
   const [newActivity, setNewActivity] = useState({
     nombre: '',
@@ -53,6 +56,17 @@ const ActividadesPage = () => {
     };
     fetchActivities();
   }, []);
+
+  const handleOpenUsuarios = (usuarios) => {
+    console.log(usuarios);
+    setSelectedUsuarios(usuarios);
+    setModalOpen(true);
+  };
+  
+  const handleCloseModal = () => {
+    setModalOpen(false);
+    setSelectedUsuarios([]);
+  };
 
   // Cargar actividades desde la API
   useEffect(() => {
@@ -161,6 +175,11 @@ const ActividadesPage = () => {
     <>
       <TopMenuUser />
       <SidebarUser />
+      <ModalUsuarios
+  isOpen={modalOpen}
+  onClose={handleCloseModal}
+  usuarios={selectedUsuarios}
+/>
       <div className="activity-page">
         <h1>Gestión de Actividades</h1>
 
@@ -338,6 +357,7 @@ const ActividadesPage = () => {
               <th>Precio</th>
               <th>Descripción</th>
               <th>Imagen</th>
+              <th>Compras</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -356,9 +376,11 @@ const ActividadesPage = () => {
                 <td>
                   <img src={activity.img} alt={activity.nombre} width="50" />
                 </td>
+                <td>{activity.usuarios.lenght}</td>
                 <td>
                   <button onClick={() => handleEditActivityClick(activity)}>Editar</button>
                   <button onClick={() => handleDeleteActivity(activity._id)}>Eliminar</button>
+                  <button onClick={() => handleOpenUsuarios(activity.usuarios || [])}>Usuarios</button>
                 </td>
               </tr>
             ))}

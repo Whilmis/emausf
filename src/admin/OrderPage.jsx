@@ -77,7 +77,7 @@ const OrderPage = () => {
   // Editar una orden
   const handleEditOrder = async () => {
     try {
-      await  updateOrdenes(editOrder);
+      await  updateOrdenes(editOrder,orders);
       paginacionOrdenes(desde)
     
      

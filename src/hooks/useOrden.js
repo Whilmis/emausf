@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { calendarApi } from '../api';
+import { useProducCart } from './useProducCart';
 
 
 
 
 
 export const useOrden = () => {
-
+     const {deleteProducCart}= useProducCart()
     const [ordenesState, setOrdenesState]= useState([])
 
 
@@ -45,7 +46,10 @@ export const useOrden = () => {
             try {
                
                 const {data } = await calendarApi.post('/ordenes',{...orden})
-                console.log(data)
+           
+                data?.productos?.map((element)=>{
+                    deleteProducCart(element._id)
+                })
                 getOrdenes()
                 
             } catch (error) {
@@ -56,12 +60,21 @@ export const useOrden = () => {
             
         }
 
-        const updateOrdenes = async (articulo ) =>{
+        const updateOrdenes = async (articulo, orders ) =>{
             try{
                 const {_id,usuario,fecha,...objeto}= articulo
-                console.log(objeto)
-                 await calendarApi.put(`/ordenes/${_id}`,{...objeto});
-               
+             
+                const {data}= await calendarApi.put(`/ordenes/${_id}`,{...objeto});
+                const articuloAnterior = orders.find((element)=> element._id == _id) ;
+                console.log(articuloAnterior)
+                if(objeto.pago == true && articuloAnterior.pago == false)
+                {
+                    await calendarApi.put(`/inventario/agregar`,{...data});
+
+                }if (objeto.pago == false && articuloAnterior.pago == true) {
+                    await calendarApi.put(`/inventario/quitar`,{...data});
+                    
+                } 
               
     
             }catch(error){

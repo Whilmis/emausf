@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react'; 
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserActive, getUsers, deleteUser, userPago} from '../store';
 import { calendarApi } from '../api';
@@ -10,6 +11,11 @@ export const useUserStore = () => {
 
     const {   users , userActive } = useSelector( state => state.user );
     const dispatch = useDispatch();
+     const [users2, setUser2] = useState([]);
+       // Cargar actividades desde la API
+       useEffect(() => {
+         setUser2(users);
+       }, [users]);
 
     const startUserActive = async(user) => {
        
@@ -70,20 +76,40 @@ export const useUserStore = () => {
     }
 
 
-    const startaddUser = async(user) => {
+    const startaddUser = async(user, image) => {
        
 
         try {
             const { data } = await calendarApi.post('/usuarios',{...user});
-            dispatch( getUsers(data) );   
+             
+        
+                 
+            if (!image || !(image instanceof File)) {
+                throw new Error('El archivo de la imagen no es válido.');
+            }
+        
+            // Preparar el FormData con la imagen (nombre 'archivo' como espera el backend)
+            const formData = new FormData();
+            formData.append('archivo', image); // El nombre del campo debe ser 'archivo' (coincidente con el backend)
+        
+            // Subir la imagen a la actividad usando PUT
+            await calendarApi.put(`/uploads/usuarios/${data.usuario.uid}`, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data', // Necesario para enviar imágenes
+                },
+            });
+
+
+             
        
         } catch (error) {
             console.error(error)
         }
     }
 
-    const startUpdateUser = async(user) => {
+    const startUpdateUser = async(user, image) => {
         try {
+            
              const{uid,confirmado,password, ...objeto } = user
              if(confirmado == 'on')
              {
@@ -95,12 +121,27 @@ export const useUserStore = () => {
                 {
                    objeto.password = password
                 }
+                
+                const { data } =  await calendarApi.put(`/usuarios/${uid}`,{...objeto });
+                console.log(data);
+          
+                     
+            if (!image || !(image instanceof File)) {
+                throw new Error('El archivo de la imagen no es válido.');
+            }
         
-            await calendarApi.put(`/usuarios/${uid}`,{...objeto });
-            const { data } = await calendarApi.get('/usuarios');
-
-            
-            dispatch( getUsers(data.usuarios) );   
+            // Preparar el FormData con la imagen (nombre 'archivo' como espera el backend)
+            const formData = new FormData();
+            formData.append('archivo', image); // El nombre del campo debe ser 'archivo' (coincidente con el backend)
+        
+            // Subir la imagen a la actividad usando PUT
+            await calendarApi.put(`/uploads/usuarios/${data.uid}`, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data', // Necesario para enviar imágenes
+                },
+            });
+             
+ 
         } catch (error) {
             console.error(error)
         }
@@ -216,7 +257,7 @@ export const useUserStore = () => {
 
     return {
         //* Propiedades
-        users, 
+        users2, 
         userActive, 
 
         //* Métodos

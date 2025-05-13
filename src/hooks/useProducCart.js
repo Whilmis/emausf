@@ -28,8 +28,8 @@ export const useProducCart = () => {
 
     const addProducCart = async (produc) => {
         try {
-            const {_id,usuario, ...producto}= produc
-            const {data } = await calendarApi.post('/productos',{...producto})
+            const {_id, ...producto}= produc
+            const {data } = await calendarApi.post('/productos',{...producto, idProducto: _id})
             dispatch( addProducCard( data) )
             
         } catch (error) {

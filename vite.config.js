@@ -1,7 +1,8 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  build: {
-    target: 'esnext',  // Asegúrate de que el target sea adecuado
-  },
+    // Otras configuraciones de Vite
+    define: {
+        'process.env': process.env // Esto asegura que process.env esté disponible en tu código
+    }
 });

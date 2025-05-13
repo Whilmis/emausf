@@ -47,7 +47,7 @@ export const useAuthStore = () => {
         }
     }
 
-    const startRegister = async({ correo, password, nombre, rol, direccion,telefono, edad, iglesia}) => {
+    const startRegister = async({ correo, password, nombre, rol, direccion,telefono, edad, iglesia}, image) => {
         dispatch( onChecking() );
         try {
          
@@ -57,14 +57,22 @@ export const useAuthStore = () => {
 
             dispatch( onLogin({ nombre: usuario.name, uid: usuario.uid }) );
 
-          /*  if(rol == "STUDENT_ROLE") {
-                const { dataE } = await calendarApi.post('/estudiantes',{   nombre,  carrera,user_id:usuario.uid })
-                console.log(dataE )
-            } else if(rol == "TEACHER_ROLE"){
-                const { dataE } = await calendarApi.post('/maestros',{   nombre,  carrera, user_id:usuario.uid  })
-                console.log(dataE )
-            } */
-
+              
+            if (!image || !(image instanceof File)) {
+                throw new Error('El archivo de la imagen no es válido.');
+            }
+        
+            // Preparar el FormData con la imagen (nombre 'archivo' como espera el backend)
+            const formData = new FormData();
+            formData.append('archivo', image); // El nombre del campo debe ser 'archivo' (coincidente con el backend)
+        
+            // Subir la imagen a la actividad usando PUT
+            await calendarApi.put(`/uploads/usuarios/${usuario.uid }`, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data', // Necesario para enviar imágenes
+                },
+            });
+             
             
 
           

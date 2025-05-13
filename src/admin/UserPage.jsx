@@ -8,6 +8,8 @@ import { SidebarUser } from '../uni/components/ui/sidebar-user/SidebarUser';
 const UserPage = () => {
   const [usersC, setUsersC] = useState([]);
   const [desde, setDesde] = useState(0);
+    const [image, setImage] = useState(null);
+    const [image2, setImage2] = useState(null);
   const [newUser, setNewUser] = useState({
     nombre: '',
     correo: '',
@@ -20,7 +22,7 @@ const UserPage = () => {
     confirmado: false, // Nuevo campo de confirmado
   });
   const [editUser, setEditUser] = useState(null); // Para editar usuarios
-  const { startgetUsers, paginacionUseres, users, startaddUser, startUpdateUser,  startDeleteUser } = useUserStore();
+  const { startgetUsers, paginacionUseres, users2, startaddUser, startUpdateUser,  startDeleteUser } = useUserStore();
 
   // Opciones de iglesias
   const iglesiaOptions = [
@@ -57,8 +59,8 @@ const UserPage = () => {
 
   // Cargar actividades desde el store
   useEffect(() => {
-    setUsersC(users);
-  }, [users]);
+    setUsersC(users2);
+  }, [users2]);
 
   // Maneja el cambio en los inputs del formulario
   const handleInputChange = (e) => {
@@ -77,6 +79,18 @@ const UserPage = () => {
       [name]: value
     });
   };
+  const handleImageChange = (e) => {
+    const file = e.target.files[0]; // Obtener el archivo seleccionado
+    if (file) {
+      setImage(file); // Guardar el archivo en el estado
+    }
+  };
+  const handleImageChange2 = (e) => {
+    const file = e.target.files[0]; // Obtener el archivo seleccionado
+    if (file) {
+      setImage2(file); // Guardar el archivo en el estado
+    }
+  };
 
   // Maneja el cambio en el checkbox de confirmado
   const handleCheckboxChange = (e) => {
@@ -89,9 +103,9 @@ const UserPage = () => {
 
   // Agregar un nuevo usuario
   const handleAddUser = async (e) => {
-    e.preventDefault();
+
     try {
-      await startaddUser(newUser);
+      await startaddUser(newUser, image);
       paginacionUseres(desde);
       setNewUser({
         nombre: '',
@@ -121,7 +135,8 @@ const UserPage = () => {
   // Editar un usuario
   const handleEditUser = async () => {
     try {
-      startUpdateUser(editUser);
+      startUpdateUser(editUser, image2);
+      await paginacionUseres(desde);
       setEditUser(null); // Reset editing state
     } catch (error) {
       console.error("Error editing user:", error);
@@ -136,7 +151,7 @@ const UserPage = () => {
         <h1>Gestión de Usuarios</h1>
 
         {/* Formulario para agregar un nuevo usuario */}
-        <form onSubmit={handleAddUser} className="user-form">
+        <form onSubmit={(e) => { e.preventDefault(); handleAddUser()}} className="user-form">
           <h2>Agregar Nuevo Usuario</h2>
           <input
             type="text"
@@ -220,6 +235,17 @@ const UserPage = () => {
               onChange={handleCheckboxChange}
             />
           </div>
+          {image && (
+        <div>
+          <h3>Vista previa:</h3>
+          <img
+            src={URL.createObjectURL(image)}
+            alt="Vista previa"
+            width="100"
+          />
+        </div>
+      )} 
+      <input type="file" onChange={handleImageChange} />
           <button type="submit">Agregar Usuario</button>
         </form>
 
@@ -309,6 +335,17 @@ const UserPage = () => {
                 onChange={handleEditInputChange}
               />
             </div>
+            {image2 && (
+        <div>
+          <h3>Vista previa:</h3>
+          <img
+            src={URL.createObjectURL(image2)}
+            alt="Vista previa"
+            width="100"
+          />
+        </div>
+      )} 
+       <input type="file" onChange={handleImageChange2} />
             <button type="submit">Guardar Cambios</button>
           </form>
         )}
@@ -317,6 +354,7 @@ const UserPage = () => {
         <table className="user-table">
           <thead>
             <tr>
+              <th>Imagen</th>
               <th>Nombre</th>
               <th>Correo</th>
               <th>Teléfono</th>
@@ -331,6 +369,9 @@ const UserPage = () => {
           <tbody>
             {usersC?.map(user => (
               <tr key={user._id}>
+                   <td>
+                  <img src={user.img} alt={user.nombre} width="50" />
+                </td>
                 <td>{user.nombre}</td>
                 <td>{user.correo}</td>
                 <td>{user.telefono}</td>
