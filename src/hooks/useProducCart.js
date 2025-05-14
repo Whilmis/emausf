@@ -56,7 +56,7 @@ export const useProducCart = () => {
 
     const paginacionProducCart = async (desde ) =>{
         try{
-            const{data} = await calendarApi.get(`/productos?desde=${desde}&limite=5`);
+            const{data} = await calendarApi.get(`/productos?desde=${desde}&limite=10`);
             const {productos} = data;
         
 

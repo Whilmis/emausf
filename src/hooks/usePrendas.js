@@ -30,7 +30,7 @@ export const usePrendas = () => {
 
     const paginacionPrendas = async (desde ) =>{
         try{
-            const{data} = await calendarApi.get(`/prendas?desde=${desde}&limite=5`);
+            const{data} = await calendarApi.get(`/prendas?desde=${desde}&limite=10`);
             console.log(data)
             const {prendas} = data;
             setPrendasState(prendas)

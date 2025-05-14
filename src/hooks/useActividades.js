@@ -30,7 +30,7 @@ export const useActividades = () => {
 
     const paginacionActividades = async (desde ) =>{
         try{
-            const{data} = await calendarApi.get(`/actividades?desde=${desde}&limite=5`);
+            const{data} = await calendarApi.get(`/actividades?desde=${desde}&limite=10`);
             const {actividades} = data;
             setActividadesState(actividades)
 

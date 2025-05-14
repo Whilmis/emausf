@@ -31,7 +31,7 @@ export const useOrden = () => {
 
     const paginacionOrdenes = async (desde ) =>{
         try{
-            const{data} = await calendarApi.get(`/ordenes?desde=${desde}&limite=5`);
+            const{data} = await calendarApi.get(`/ordenes?desde=${desde}&limite=10`);
             console.log(data)
             const {ordenes} = data;
             setOrdenesState(ordenes)
