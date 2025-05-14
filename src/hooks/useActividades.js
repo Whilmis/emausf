@@ -82,7 +82,7 @@ export const useActividades = () => {
             formData.append('archivo', image); // El nombre del campo debe ser 'archivo' (coincidente con el backend)
         
             // Subir la imagen a la actividad usando PUT
-            await calendarApi.put(`/uploads/articulos/${data._id}`, formData, {
+            await calendarApi.put(`/uploads/actividads/${data._id}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data', // Necesario para enviar imágenes
                 },
