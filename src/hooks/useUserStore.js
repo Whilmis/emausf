@@ -226,22 +226,7 @@ export const useUserStore = () => {
 
 
 
-    const startDeleteMateiras = async(materiasd) => {
-   
-        try {
 
-            const {materias, _id, nombre, user_id} = userActive
-            const materiasUserP = materias.map((element) => 
-                materiasd.find(materia => materia.clave == element.clave) ? {...element,tipo: 'NO_TOMADA', nota: [0,0,0,0]} :  element
-           
-        )
-        
-        const { dataE } = await calendarApi.put(`/estudiantes/${_id}`,{ nombre, user_id,
-             materias: materiasUserP  })
-        } catch (error) {
-            console.error(error)
-        }
-    }
 
     const startDeleteUser = async(id) => {
    
@@ -250,6 +235,20 @@ export const useUserStore = () => {
             dispatch( deleteUser(id) );
         } catch (error) {
             console.error(error)
+        }
+    }
+
+    const buscarUsuarios = async (busqueda ) =>{
+        try{
+           
+            const{data}  =    await calendarApi.get(`/buscar/usuarios/${busqueda}`);
+            const {results} = data;
+            dispatch( getUsers(results) );  
+          
+
+        }catch(error){
+            console.error(error)
+
         }
     }
 
@@ -266,7 +265,8 @@ export const useUserStore = () => {
         startgetUsers,
         paginacionUseres,
         startaddUser,
-        startDeleteMateiras,
+        buscarUsuarios,
+     
         startUpdateUser,
         startDeleteUser,
         startUpdateNota,

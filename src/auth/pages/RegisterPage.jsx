@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import { useAuthStore, useForm } from '../../hooks';
 import Swal from 'sweetalert2';
 
@@ -20,30 +21,66 @@ const registerFormFields = {
 export const ResgisterPage = () => {
   const { registerEmail, registerName, registerPassword, registerPassword2, registerTelefono, registerDireccion, registerEdad, onInputChange: onRegisterInputChange, registerIglesia } = useForm(registerFormFields);
   const {  errorMessage, startRegister } = useAuthStore();
-   const [image, setImage] = useState(null); 
+  const [image, setImage] = useState(null); 
+  const form = useRef();
 
   const registerSubmit = (event) => {
     event.preventDefault();
+
+    // Validaciones:
+    if (!registerName || !registerEmail || !registerTelefono || !registerDireccion || !registerPassword || !registerPassword2 || !registerEdad) {
+      Swal.fire('Error en el formulario', 'Por favor llena todos los campos', 'error');
+      return;
+    }
+
+    // Validación de formato de correo
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(registerEmail)) {
+      Swal.fire('Error en el correo', 'El correo electrónico no es válido', 'error');
+      return;
+    }
+
+    // Validación de que las contraseñas coinciden
     if (registerPassword !== registerPassword2) {
       Swal.fire('Error en registro', 'Las contraseñas no coinciden', 'error');
       return;
     }
-    console.log({ nombre: registerName, correo: registerEmail, password: registerPassword, iglesia: registerIglesia , direccion:registerDireccion, telefono: registerTelefono, edad: registerEdad,  "rol": "USER_ROLE"})
-    startRegister({ nombre: registerName, correo: registerEmail, direccion:registerDireccion, telefono: registerTelefono, edad: registerEdad.number, iglesia: registerIglesia ,    rol: "USER_ROLE",  password: registerPassword,}, image);
+
+    // Validación de edad
+    if (registerEdad < 17) {
+      Swal.fire('Error en edad', 'tiene que ser mayor de edad', 'error');
+      return;
+    }
+
+    console.log({ nombre: registerName, correo: registerEmail, password: registerPassword, iglesia: registerIglesia , direccion:registerDireccion, telefono: registerTelefono, edad: registerEdad, "rol": "USER_ROLE"});
+    startRegister({ nombre: registerName, correo: registerEmail, direccion:registerDireccion, telefono: registerTelefono, edad: registerEdad, iglesia: registerIglesia , rol: "USER_ROLE", password: registerPassword }, image);
+
+    // Enviar el correo de confirmación
+    emailjs.sendForm('service_ed2rlr9', 'template_o5s4i1n', form.current, {
+      publicKey: 'EbEldik7lyNTXM7a4',
+    })
+    .then(
+      () => {
+        console.log('SUCCESS!');
+      },
+      (error) => {
+        console.log('FAILED...', error.text);
+      }
+    );
+
     Swal.fire({
-      title: "Usuario creado con exito, ya puedes loguearte!!!!!",
+      title: "Usuario creado con éxito, espera la confirmación del equipo administrativo de Emaús hombres para poder entrar a la tienda",
       icon: "success",
       confirmButtonText: 'Aceptar',
-      background: '#ffffff',         // Fondo blanco limpio
-      color: '#333333',               // Color del texto
-      confirmButtonColor: '#007aff',  // Botón azul tipo Tesla
-      width: '400px',                 // Opcional: un ancho más reducido
+      background: '#ffffff',
+      color: '#333333',
+      confirmButtonColor: '#007aff',
+      width: '400px',
       customClass: {
-        popup: 'rounded-xl shadow-lg',     // Bordes redondeados y sombra
-        title: 'text-2xl font-semibold',   // Título grande y claro
+        popup: 'rounded-xl shadow-lg',
+        title: 'text-2xl font-semibold',
         confirmButton: 'text-white font-bold py-2 px-4 rounded-lg'
       }
-
     });
   };
 
@@ -56,9 +93,7 @@ export const ResgisterPage = () => {
 
   useEffect(() => {
     if (errorMessage !== undefined) {
-      Swal.fire('Error en la autenticación', errorMessage, 
-        
-      );
+      Swal.fire('Error en la autenticación', errorMessage);
     }
   }, [errorMessage]);
 
@@ -80,6 +115,7 @@ export const ResgisterPage = () => {
                 name="registerName"
                 value={registerName}
                 onChange={onRegisterInputChange}
+                required
               />
             </div>
 
@@ -91,6 +127,7 @@ export const ResgisterPage = () => {
                 name="registerEmail"
                 value={registerEmail}
                 onChange={onRegisterInputChange}
+                required
               />
             </div>
 
@@ -102,6 +139,7 @@ export const ResgisterPage = () => {
                 name="registerTelefono"
                 value={registerTelefono}
                 onChange={onRegisterInputChange}
+                required
               />
             </div>
 
@@ -113,11 +151,12 @@ export const ResgisterPage = () => {
                 name="registerDireccion"
                 value={registerDireccion}
                 onChange={onRegisterInputChange}
+                required
               />
             </div>
 
             <div className="register-field">
-            <label className="register-label">Edad:</label>
+              <label className="register-label">Edad:</label>
               <input
                 type="number"
                 className="register-input"
@@ -125,6 +164,8 @@ export const ResgisterPage = () => {
                 name="registerEdad"
                 value={registerEdad}
                 onChange={onRegisterInputChange}
+                min="1"
+                required
               />
             </div>
 
@@ -136,6 +177,7 @@ export const ResgisterPage = () => {
                 name="registerPassword"
                 value={registerPassword}
                 onChange={onRegisterInputChange}
+                required
               />
             </div>
 
@@ -147,16 +189,18 @@ export const ResgisterPage = () => {
                 name="registerPassword2"
                 value={registerPassword2}
                 onChange={onRegisterInputChange}
+                required
               />
             </div>
 
             <div className="register-field">
-              <label className="register-label">Iglesia:</label>
+              <label className="register-label">Parroquia:</label>
               <select
                 className="register-select"
                 name="registerIglesia"
                 value={registerIglesia}
                 onChange={onRegisterInputChange}
+                required
               >
                 <option value="Parroquia San Fco. de Asis Paz y Bien">Parroquia San Fco. de Asis Paz y Bien</option>
                 <option value="Parroquia San Jose Obrero">Parroquia San Jose Obrero</option>
@@ -166,17 +210,17 @@ export const ResgisterPage = () => {
               </select>
             </div>
             {image && (
-        <div>
-          <h3>Vista previa:</h3>
-          <img
-            src={URL.createObjectURL(image)}
-            alt="Vista previa"
-            width="100"
-          />
-        </div>
-      )} 
-      <input type="file" onChange={handleImageChange} />
-
+              <div>
+                <h3>Vista previa:</h3>
+                <img
+                  src={URL.createObjectURL(image)}
+                  alt="Vista previa"
+                  width="100"
+                />
+              </div>
+            )}
+            <input type="file" onChange={handleImageChange} />
+            
             <div className="register-button-container">
               <input
                 type="submit"
@@ -187,6 +231,9 @@ export const ResgisterPage = () => {
 
           </form>
         </div>
+        <form ref={form} >
+  
+    </form>
       </div>
     </>
   );

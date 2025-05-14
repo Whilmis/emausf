@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import ModalUsuarios from './ModalUsuarios';
+import { SearchForm } from './SearchForm';
 import './prendaPage.css'; 
 import { usePrendas } from '../hooks/usePrendas';// Asegúrate de tener los estilos adecuados
 import Footer from '../uni/components/ui/footer/Footer';
+
 import { TopMenuUser } from '../uni/components/ui/top-menu-user/TopMenuUser';
 import { SidebarUser } from '../uni/components/ui/sidebar-user/SidebarUser';
 
@@ -9,6 +12,8 @@ const PrendaPage = () => {
   const [products, setProducts] = useState([]);
   const [image, setImage] = useState(null);
    const [image2, setImage2] = useState(null);
+   const [modalOpen, setModalOpen] = useState(false);
+const [selectedUsuarios, setSelectedUsuarios] = useState([]);
   const [desde, setDesde] = useState(0);
   const [newProduct, setNewProduct] = useState({
     nombre: '',
@@ -20,7 +25,7 @@ const PrendaPage = () => {
 
   });
   const [editProduct, setEditProduct] = useState(null); // Para editar productos
-  const {paginacionPrendas, prendasState,addPrendas, updatePrendas,delentePrendas } = usePrendas();
+  const { paginacionPrendas, prendasState,addPrendas, updatePrendas,delentePrendas, buscarPrendas } = usePrendas();
   const anteriorP = () =>{
     if(desde >= 0){
       setDesde(desde - 5)
@@ -56,6 +61,16 @@ const PrendaPage = () => {
       useEffect(() => {
         setProducts(prendasState);
         }, [prendasState]);
+
+        const handleOpenUsuarios = (usuarios) => {
+          setSelectedUsuarios(usuarios);
+          setModalOpen(true);
+        };
+        
+        const handleCloseModal = () => {
+          setModalOpen(false);
+          setSelectedUsuarios([]);
+        };
   // Maneja el cambio en los inputs del formulario
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -64,6 +79,14 @@ const PrendaPage = () => {
       [name]: value
     });
   };
+  const handleSubmit = (searchTerm) => {
+    buscarPrendas(searchTerm)
+  };
+
+  
+  const reset = async ()=>{
+    await paginacionPrendas(desde)
+   }
 
   // Maneja el cambio en los campos de editar
   const handleEditInputChange = (e) => {
@@ -137,6 +160,11 @@ const PrendaPage = () => {
     <>
     <TopMenuUser />
     <SidebarUser />
+    <ModalUsuarios
+  isOpen={modalOpen}
+  onClose={handleCloseModal}
+  usuarios={selectedUsuarios}
+/>
     <div className="product-page">
       <h1>Gestión de Prendas</h1>
 
@@ -256,6 +284,7 @@ const PrendaPage = () => {
           <button type="submit">Guardar Cambios</button>
         </form>
       )}
+      <SearchForm  onSubmit={handleSubmit} handleReset={reset}/>
 
       {/* Tabla de productos */}
       <table className="product-table">
@@ -284,6 +313,7 @@ const PrendaPage = () => {
               <td>
                 <button onClick={() => setEditProduct(product)}>Editar</button>
                 <button onClick={() => handleDeleteProduct(product._id)}>Eliminar</button>
+                <button onClick={() => handleOpenUsuarios(activity.usuarios || [])}>Usuarios</button>
               </td>
             </tr>
           ))}

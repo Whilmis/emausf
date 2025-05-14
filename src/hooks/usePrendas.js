@@ -111,6 +111,20 @@ export const usePrendas = () => {
         }
     }
 
+    const buscarPrendas = async (busqueda ) =>{
+        try{
+           
+            const{data}  =    await calendarApi.get(`/buscar/prendas/${busqueda}`);
+            const {results} = data;
+            setPrendasState(results)
+          
+
+        }catch(error){
+            console.error(error)
+
+        }
+    }
+
 
     
     return {
@@ -121,7 +135,9 @@ export const usePrendas = () => {
         //* Métodos
   
         getPrendas,
-        paginacionPrendas,
+        paginacionPrendas, 
+        buscarPrendas,
+        setPrendasState,
         addPrendas,
         updatePrendas,
         delentePrendas

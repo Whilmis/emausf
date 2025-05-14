@@ -44,6 +44,7 @@ import ActividadesPage from '../admin/ActividadesPage';
 import PrendaPage from '../admin/PrendaPage';
 import UserPage from '../admin/UserPage';
 import OrderPage from '../admin/OrderPage';
+import { ContactUs } from '../uni/pages/ContactUs';
 
 
 
@@ -94,6 +95,7 @@ export const AppRouter = () => {
                 <Route path="/admin/prendas" element={<PrendaPage />} />
                 <Route path="/admin/usuarios" element={<UserPage />} />
                 <Route path="/admin/ordenes" element={<OrderPage />} />
+                <Route path="/correo" element={<ContactUs />} />
                          
 
                 

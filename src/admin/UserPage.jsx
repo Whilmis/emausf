@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useUserStore } from '../hooks/useUserStore';
+import { SearchForm } from './SearchForm';
 import './userPage.css'; // Asegúrate de tener los estilos adecuados
 import Footer from '../uni/components/ui/footer/Footer';
 import { TopMenuUser } from '../uni/components/ui/top-menu-user/TopMenuUser';
@@ -22,7 +23,7 @@ const UserPage = () => {
     confirmado: false, // Nuevo campo de confirmado
   });
   const [editUser, setEditUser] = useState(null); // Para editar usuarios
-  const { startgetUsers, paginacionUseres, users2, startaddUser, startUpdateUser,  startDeleteUser } = useUserStore();
+  const { startgetUsers, paginacionUseres, users2, startaddUser, startUpdateUser,  startDeleteUser, buscarUsuarios } = useUserStore();
 
   // Opciones de iglesias
   const iglesiaOptions = [
@@ -70,6 +71,13 @@ const UserPage = () => {
       [name]: value
     });
   };
+  const handleSubmit = (searchTerm) => {
+    buscarUsuarios(searchTerm)
+  };
+
+  const reset = async ()=>{
+    await paginacionUseres(desde)
+   }
 
   // Maneja el cambio en los campos de editar
   const handleEditInputChange = (e) => {
@@ -187,7 +195,7 @@ const UserPage = () => {
           />
           {/* Selector de iglesia */}
           <div className="register-field">
-            <label className="register-label">Iglesia:</label>
+            <label className="register-label">Parroquia:</label>
             <select
               className="register-select"
               name="iglesia"
@@ -287,7 +295,7 @@ const UserPage = () => {
             />
             {/* Selector de iglesia para editar */}
             <div className="register-field">
-              <label className="register-label">Iglesia:</label>
+              <label className="register-label">Parroquia:</label>
               <select
                 className="register-select"
                 name="iglesia"
@@ -349,7 +357,7 @@ const UserPage = () => {
             <button type="submit">Guardar Cambios</button>
           </form>
         )}
-
+         <SearchForm  onSubmit={handleSubmit} handleReset={reset}/>
         {/* Tabla de usuarios */}
         <table className="user-table">
           <thead>
@@ -358,7 +366,7 @@ const UserPage = () => {
               <th>Nombre</th>
               <th>Correo</th>
               <th>Teléfono</th>
-              <th>Iglesia</th>
+              <th>Parroquia</th>
               <th>Edad</th>
               <th>Dirección</th>
               <th>Rol</th>

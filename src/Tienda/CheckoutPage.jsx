@@ -1,7 +1,9 @@
-import React, { useEffect, useState }  from 'react';
+import React, { useEffect, useState, useRef }  from 'react';
+import emailjs from '@emailjs/browser';
 import{useUserStore } from '../hooks/useUserStore'
 import{useProducCart} from '../hooks/useProducCart'
 import{useOrden} from '../hooks/useOrden'
+import Swal from 'sweetalert2';
 
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import './checkoutPage.css'; // Importa el archivo CSS
@@ -13,6 +15,7 @@ const CheckoutPage = () => {
       const { producCard, getProducCart }= useProducCart()
       const { userActive  }= useUserStore()
       const { addOrden  }= useOrden()
+       const form = useRef();
          const[total, setTotal]= useState(0)
  
          const onApprove = (data, actions) => {
@@ -32,6 +35,32 @@ const CheckoutPage = () => {
     const nombre = userActive.nombre +" "+ producCard[0].nombre ;
    
     addOrden({nombre: nombre ,productos:producCard, costo: total })
+    emailjs.sendForm('service_ed2rlr9', 'template_oer85vh', form.current, {
+      publicKey: 'EbEldik7lyNTXM7a4',
+    })
+    .then(
+      () => {
+        console.log('SUCCESS!');
+      },
+      (error) => {
+        console.log('FAILED...', error.text);
+      }
+    );
+        Swal.fire({
+          title: "Reserva realizada, recuerda que puedes completar la compra además de la opción de PayPal  y tarjeta, pagando en efectivo o realizando una transferencia y enviando el comprobante numero de contacto 809-555-6889",
+          icon: "success",
+          confirmButtonText: 'Aceptar',
+          background: '#ffffff',         // Fondo blanco limpio
+          color: '#333333',               // Color del texto
+          confirmButtonColor: '#007aff',  // Botón azul tipo Tesla
+          width: '400px',                 // Opcional: un ancho más reducido
+          customClass: {
+            popup: 'rounded-xl shadow-lg',     // Bordes redondeados y sombra
+            title: 'text-2xl font-semibold',   // Título grande y claro
+            confirmButton: 'text-white font-bold py-2 px-4 rounded-lg'
+          }
+    
+        });
   //  alert('Pedido realizado con éxito');
   };
 
@@ -97,6 +126,9 @@ const CheckoutPage = () => {
         </div>
       </form>
     </div>
+    <form ref={form} >
+  
+  </form>
     <Footer />
     </>
   );

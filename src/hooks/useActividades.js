@@ -121,6 +121,21 @@ export const useActividades = () => {
 
         }
     }
+
+
+    const buscarActividad = async (busqueda ) =>{
+        try{
+           
+            const{data}  =    await calendarApi.get(`/buscar/actividads/${busqueda}`);
+            const {results} = data;
+            setActividadesState(results)
+          
+
+        }catch(error){
+            console.error(error)
+
+        }
+    }
     
     return {
         //* Propiedades
@@ -130,6 +145,7 @@ export const useActividades = () => {
         //* Métodos
   
         getActividades,
+        buscarActividad,
         paginacionActividades,
         addActividades,
         updateActividades,

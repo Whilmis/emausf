@@ -109,6 +109,20 @@ export const useArticulos = () => {
         }
     }
 
+    const buscarArticulos = async (busqueda ) =>{
+        try{
+           
+            const{data}  =    await calendarApi.get(`/buscar/articulos/${busqueda}`);
+            const {results} = data;
+            setAticulosState(results)
+          
+
+        }catch(error){
+            console.error(error)
+
+        }
+    }
+
     
     return {
         //* Propiedades
@@ -118,6 +132,7 @@ export const useArticulos = () => {
         //* Métodos
   
         getArticulos,
+        buscarArticulos,
         paginacionArticulos,
         addArticulos,
         updateArticulos,

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'; 
 import ModalUsuarios from './ModalUsuarios'; // Importa axios para las solicitudes HTTP
+import { SearchForm } from './SearchForm';
 import './activityPage.css'; // Estilos de la página
 import Footer from '../uni/components/ui/footer/Footer';
 import { useActividades } from '../hooks/useActividades';
@@ -13,7 +14,7 @@ const ActividadesPage = () => {
   const [desde, setDesde] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
 const [selectedUsuarios, setSelectedUsuarios] = useState([]);
-  const { paginacionActividades, actividadesState, updateActividades,addActividades,delenteActividades } = useActividades();
+  const { paginacionActividades, actividadesState, updateActividades,addActividades,delenteActividades, buscarActividad} = useActividades();
   const [newActivity, setNewActivity] = useState({
     nombre: '',
     iglesia: "Parroquia San Fco. de Asis Paz y Bien",
@@ -56,6 +57,10 @@ const [selectedUsuarios, setSelectedUsuarios] = useState([]);
     };
     fetchActivities();
   }, []);
+
+  const handleSubmit = (searchTerm) => {
+    buscarActividad(searchTerm)
+  };
 
   const handleOpenUsuarios = (usuarios) => {
     console.log(usuarios);
@@ -114,6 +119,10 @@ const [selectedUsuarios, setSelectedUsuarios] = useState([]);
       [name]: value
     });
   };
+
+  const reset = async ()=>{
+    await paginacionActividades(desde)
+   }
 
   // Setear valores de la actividad para edición
   const handleEditActivityClick = (activity) => {
@@ -195,7 +204,7 @@ const [selectedUsuarios, setSelectedUsuarios] = useState([]);
             required
           />
           <div className="register-field">
-            <label className="register-label">Iglesia:</label>
+            <label className="register-label">Parroquia:</label>
             <select
               className="register-select"
               name="iglesia"
@@ -277,7 +286,7 @@ const [selectedUsuarios, setSelectedUsuarios] = useState([]);
               required
             />
             <div className="register-field">
-              <label className="register-label">Iglesia:</label>
+              <label className="register-label">Parroquia:</label>
               <select
                 className="register-select"
                 name="iglesia"
@@ -345,13 +354,13 @@ const [selectedUsuarios, setSelectedUsuarios] = useState([]);
             <button type="submit">Guardar Cambios</button>
           </form>
         )}
-
+         <SearchForm  onSubmit={handleSubmit} handleReset={reset}/>
         {/* Tabla de actividades */}
         <table className="activity-table">
           <thead>
             <tr>
               <th>Nombre</th>
-              <th>Iglesia</th>
+              <th>Parroquia</th>
               <th>Cantidad</th>
               <th>Fechas</th>
               <th>Precio</th>
@@ -376,7 +385,7 @@ const [selectedUsuarios, setSelectedUsuarios] = useState([]);
                 <td>
                   <img src={activity.img} alt={activity.nombre} width="50" />
                 </td>
-                <td>{activity.usuarios.lenght}</td>
+                <td>{activity.usuarios.length}</td>
                 <td>
                   <button onClick={() => handleEditActivityClick(activity)}>Editar</button>
                   <button onClick={() => handleDeleteActivity(activity._id)}>Eliminar</button>

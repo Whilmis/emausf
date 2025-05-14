@@ -7,12 +7,13 @@ const ModalUsuarios = ({ isOpen, onClose, usuarios }) => {
   return (
     <div className="modal-backdrop">
       <div className="modal-container">
-        <h2>Usuarios que han participado</h2>
+        <h2>Miembros registrados</h2>
         <table className="modal-table">
           <thead>
             <tr>
               <th>Nombre</th>
               <th>Correo</th>
+              <th>Telefono</th>
               <th>Orden</th>
             </tr>
           </thead>
@@ -21,6 +22,7 @@ const ModalUsuarios = ({ isOpen, onClose, usuarios }) => {
               <tr key={index}>
                 <td>{usuario.nombre}</td>
                 <td>{usuario.correo}</td>
+                <td>{usuario.telefono}</td>
                 <td>{usuario.ordenNombre || 'N/A'}</td>
               </tr>
             ))}

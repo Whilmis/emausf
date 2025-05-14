@@ -14,7 +14,7 @@ export const TopMenu = () => {
      
       <div className="logo">
       <img src='https://res.cloudinary.com/dwjkuhxmr/image/upload/v1746790797/imagenesvarias/goi9volcm529ppaqsipx.png' alt="Emaús" className="logo" />
-        <Link to={'/'} className="logo-link">Emaus Hombres</Link>
+        <Link to={'/'} className="logo-link">Emaus Hombres Zona Oriental</Link>
       </div>
 
       <div className="center-menu">
