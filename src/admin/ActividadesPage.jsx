@@ -389,7 +389,7 @@ const [selectedUsuarios, setSelectedUsuarios] = useState([]);
                 <td>
                   <button onClick={() => handleEditActivityClick(activity)}>Editar</button>
                   <button onClick={() => handleDeleteActivity(activity._id)}>Eliminar</button>
-                  <button onClick={() => handleOpenUsuarios(activity.usuarios || [])}>Usuarios</button>
+                  <button onClick={() => handleOpenUsuarios(activity.usuarios || [])}>Registrados</button>
                 </td>
               </tr>
             ))}
