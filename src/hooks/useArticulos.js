@@ -30,7 +30,7 @@ export const useArticulos = () => {
 
     const paginacionArticulos = async (desde ) =>{
         try{
-            const{data} = await calendarApi.get(`/articulos?desde=${desde}&limite=5`);
+            const{data} = await calendarApi.get(`/articulos?desde=${desde}&limite=10`);
             const {articulo} = data;
             setAticulosState(articulo)
 
